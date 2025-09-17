@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .example-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: #2575fc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        .code-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            border-left: 4px solid #2575fc;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #2575fc;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1c60cf;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f4ff;
+            border-radius: 8px;
+            min-height: 50px;
+            font-weight: 500;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Examples</h1>
+            <p class="subtitle">Explore these interactive examples to learn fundamental JavaScript concepts</p>
+        </header>
+        
+        <div class="examples-grid">
+            <!-- Example 1: Variables and Data Types -->
+            <div class="example-card">
+                <div class="card-header">Variables & Data Types</div>
+                <div class="card-body">
+                    <p class="card-description">JavaScript variables can hold different data types: numbers, strings, booleans, arrays, and objects.</p>
+                    <div class="code-container">
+                        let name = "John";<br>
+                        let age = 30;<br>
+                        let isStudent = false;<br>
+                        let hobbies = ["reading", "gaming", "coding"];<br>
+                        let address = { city: "New York", country: "USA" };
+                    </div>
+                    <button class="btn" onclick="showDataTypes()">Run Example</button>
+                    <div class="result" id="dataTypesResult"></div>
+                </div>
+            </div>
+            
+            <!-- Example 2: Functions -->
+            <div class="example-card">
+                <div class="card-header">Functions</div>
+                <div class="card-body">
+                    <p class="card-description">Functions are blocks of code designed to perform a particular task.</p>
+                    <div class="input-group">
+                        <label>Enter a number:</label>
+                        <input type="number" id="numberInput" value="5">
+                    </div>
+                    <div class="code-container">
+                        function calculateSquare(num) {<br>
+                        &nbsp;&nbsp;return num * num;<br>
+                        }
+                    </div>
+                    <button class="btn" onclick="calculateSquare()">Calculate Square</button>
+                    <div class="result" id="functionResult"></div>
+                </div>
+            </div>
+            
+            <!-- Example 3: Conditional Statements -->
+            <div class="example-card">
+                <div class="card-header">Conditional Statements</div>
+                <div class="card-body">
+                    <p class="card-description">Conditional statements are used to perform different actions based on different conditions.</p>
+                    <div class="input-group">
+                        <label>Enter your age:</label>
+                        <input type="number" id="ageInput" value="20">
+                    </div>
+                    <div class="code-container">
+                        if (age >= 18) {<br>
+                        &nbsp;&nbsp;return "You are an adult";<br>
+                        } else {<br>
+                        &nbsp;&nbsp;return "You are a minor";<br>
+                        }
+                    </div>
+                    <button class="btn" onclick="checkAge()">Check Age</button>
+                    <div class="result" id="conditionalResult"></div>
+                </div>
+            </div>
+            
+            <!-- Example 4: Loops -->
+            <div class="example-card">
+                <div class="card-header">Loops</div>
+                <div class="card-body">
+                    <p class="card-description">Loops can execute a block of code a number of times.</p>
+                    <div class="input-group">
+                        <label>Enter a number:</label>
+                        <input type="number" id="loopInput" value="5">
+                    </div>
+                    <div class="code-container">
+                        for (let i = 1; i <= num; i++) {<br>
+                        &nbsp;&nbsp;result += `Iteration ${i}<br>`;<br>
+                        }
+                    </div>
+                    <button class="btn" onclick="runLoop()">Run Loop</button>
+                    <div class="result" id="loopResult"></div>
+                </div>
+            </div>
+            
+            <!-- Example 5: DOM Manipulation -->
+            <div class="example-card">
+                <div class="card-header">DOM Manipulation</div>
+                <div class="card-body">
+                    <p class="card-description">JavaScript can change all the HTML elements and attributes in the page.</p>
+                    <div class="code-container">
+                        document.getElementById("demo").innerHTML =<br>
+                        &nbsp;&nbsp;"Hello World!";
+                    </div>
+                    <button class="btn" onclick="changeText()">Change Text</button>
+                    <button class="btn" onclick="changeColor()">Change Color</button>
+                    <div class="result" id="domResult">This text will change</div>
+                </div>
+            </div>
+            
+            <!-- Example 6: Event Handling -->
+            <div class="example-card">
+                <div class="card-header">Event Handling</div>
+                <div class="card-body">
+                    <p class="card-description">JavaScript can be executed when an event occurs, like when the user clicks on an HTML element.</p>
+                    <div class="code-container">
+                        element.addEventListener("click", function() {<br>
+                        &nbsp;&nbsp;// Code to execute on click<br>
+                        });
+                    </div>
+                    <button class="btn" id="eventButton">Click Me</button>
+                    <div class="result" id="eventResult">Event results will appear here</div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created with JavaScript • Refresh the page to reset examples</p>
+        </footer>
+    </div>
+
+    <script>
+        // Example 1: Variables and Data Types
+        function showDataTypes() {
+            let name = "John";
+            let age = 30;
+            let isStudent = false;
+            let hobbies = ["reading", "gaming", "coding"];
+            let address = { city: "New York", country: "USA" };
+            
+            let output = `
+                Name: ${name} <br>
+                Age: ${age} <br>
+                Is Student: ${isStudent} <br>
+                Hobbies: ${hobbies.join(", ")} <br>
+                Address: ${address.city}, ${address.country}
+            `;
+            
+            document.getElementById("dataTypesResult").innerHTML = output;
+        }
+        
+        // Example 2: Functions
+        function calculateSquare() {
+            let num = document.getElementById("numberInput").value;
+            let result = num * num;
+            document.getElementById("functionResult").innerHTML = 
+                `The square of ${num} is ${result}`;
+        }
+        
+        // Example 3: Conditional Statements
+        function checkAge() {
+            let age = document.getElementById("ageInput").value;
+            let message;
+            
+            if (age >= 18) {
+                message = "You are an adult";
+            } else if (age >= 13) {
+                message = "You are a teenager";
+            } else if (age >= 0) {
+                message = "You are a child";
+            } else {
+                message = "Please enter a valid age";
+            }
+            
+            document.getElementById("conditionalResult").innerHTML = message;
+        }
+        
+        // Example 4: Loops
+        function runLoop() {
+            let num = document.getElementById("loopInput").value;
+            let output = "";
+            
+            for (let i = 1; i <= num; i++) {
+                output += `Iteration ${i}<br>`;
+            }
+            
+            document.getElementById("loopResult").innerHTML = output;
+        }
+        
+        // Example 5: DOM Manipulation
+        function changeText() {
+            document.getElementById("domResult").innerHTML = 
+                "Text changed with JavaScript!";
+        }
+        
+        function changeColor() {
+            const colors = ["#ff6b6b", "#4ecdc4", "#45b7d1", "#ffbe0b", "#ff006e"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.getElementById("domResult").style.color = randomColor;
+        }
+        
+        // Example 6: Event Handling
+        document.getElementById("eventButton").addEventListener("click", function() {
+            const events = [
+                "Button clicked!",
+                "You triggered a JavaScript event!",
+                "Event handling in action!",
+                "Well done! You clicked the button.",
+                "JavaScript is responding to your click."
+            ];
+            
+            const randomEvent = events[Math.floor(Math.random() * events.length)];
+            document.getElementById("eventResult").innerHTML = randomEvent;
+            
+            // Change button color temporarily
+            this.style.background = "#4ecdc4";
+            setTimeout(() => {
+                this.style.background = "#2575fc";
+            }, 300);
+        });
+        
+        // Initialize some examples on page load
+        window.onload = function() {
+            showDataTypes();
+        };
+    </script>
+</body>
+</html>
